@@ -8,7 +8,7 @@ public class Producto {
 	String nombre;
 	double precio;
 	int cantidad;
-
+	int[] stock = new int[30];
 	/**
 	 * Creacion de los constructores necesarios, con y sin atributos
 	 * 
@@ -60,4 +60,6 @@ public class Producto {
 		this.cantidad = cantidad;
 	}
 
+
 }
+

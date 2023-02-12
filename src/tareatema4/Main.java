@@ -7,12 +7,32 @@ import java.util.Scanner;
 
 public class Main {
 
+	public static int calcularStock(int stock1[]) {
+		int contador = 0;
+
+		for (int i = 0; i < stock1.length; i++) {
+			if (stock1[i] == 1) {
+				contador++;
+			}
+		}
+		return contador;
+	}
+
+	public static void rellenarStock(int stock[]) {
+		for (int i = 1; i < stock.length; i++) {
+			stock[i] = 1;
+		}
+	}
+
+
 	public static void main(String[] args) {
-		int menu, elec, elige, pagar, seleccion3;
+		int menu, elec, elige, pagar, seleccion3, cantidad, cantidad1, numeroUnos, numerosUnos2;
 		double total = 0, total2, total3;
 		String telef, telef1 = "", telef2 = "", telef3 = "", tarj, seleccion1, seleccion2;
 		java.util.Date fecha = new Date();
 		DateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+		int[] stock = new int[30];
+		int [] stock2 = new int [30];
 
 		/**
 		 * Creacion de la pasarela de pago
@@ -38,6 +58,16 @@ public class Main {
 		Producto p4 = new Producto();
 
 		/**
+		 * Metodo para rellenar todos los stocks
+		 */
+		rellenarStock(stock);
+		numeroUnos = calcularStock(stock);
+		
+		rellenarStock(stock2);
+		numerosUnos2 = calcularStock(stock2);
+
+
+		/**
 		 * Menu para crear los clientes y los productos
 		 */
 
@@ -50,6 +80,7 @@ public class Main {
 		/**
 		 * Funcion donde se ponen los datos a los clientes o productos
 		 */
+
 
 		switch (menu) {
 
@@ -107,8 +138,6 @@ public class Main {
 			p.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p.setPrecio(sc.nextDouble());
-			System.out.println("Dime la cantidad de Producto");
-			p.setCantidad(sc.nextInt());
 			System.out.println("El primer Producto ha sido creado correctamente");
 
 			/** Creacion del segundo Producto */
@@ -117,8 +146,6 @@ public class Main {
 			p1.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p1.setPrecio(sc.nextDouble());
-			System.out.println("Dime la cantidad de Producto");
-			p1.setCantidad(sc.nextInt());
 			System.out.println("El segundo Producto ha sido creado correctamente ");
 
 			/** Creacion del tercer Producto */
@@ -127,8 +154,6 @@ public class Main {
 			p2.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p2.setPrecio(sc.nextDouble());
-			System.out.println("Dime la cantidad de Producto");
-			p2.setCantidad(sc.nextInt());
 			System.out.println("El tercer Producto ha sido creado correctamente");
 
 			/** Creacion del cuarto Producto */
@@ -137,8 +162,6 @@ public class Main {
 			p3.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p3.setPrecio(sc.nextDouble());
-			System.out.println("Dime la cantidad de Producto");
-			p3.setCantidad(sc.nextInt());
 			System.out.println("El cuarto Producto ha sido creado correctamente");
 
 			/** Creacion del quinto Producto */
@@ -147,8 +170,6 @@ public class Main {
 			p4.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p4.setPrecio(sc.nextDouble());
-			System.out.println("Dime la cantidad de Producto");
-			p4.setCantidad(sc.nextInt());
 			System.out.println("El quinto Producto ha sido creado correctamente");
 			break;
 
@@ -168,8 +189,6 @@ public class Main {
 			p.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p.setPrecio(sc.nextDouble());
-			System.out.println("Dime la cantidad de Producto");
-			p.setCantidad(sc.nextInt());
 			System.out.println("El primer Producto ha sido creado correctamente");
 
 			/** Creacion del segundo Producto */
@@ -178,8 +197,6 @@ public class Main {
 			p1.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p1.setPrecio(sc.nextDouble());
-			System.out.println("Dime la cantidad de Producto");
-			p1.setCantidad(sc.nextInt());
 			System.out.println("El segundo Producto ha sido creado correctamente ");
 
 			/** Creacion del tercer Producto */
@@ -188,8 +205,6 @@ public class Main {
 			p2.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p2.setPrecio(sc.nextDouble());
-			System.out.println("Dime la cantidad de Producto");
-			p2.setCantidad(sc.nextInt());
 			System.out.println("El tercer Producto ha sido creado correctamente");
 
 			/** Creacion del cuarto Producto */
@@ -198,8 +213,6 @@ public class Main {
 			p3.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p3.setPrecio(sc.nextDouble());
-			System.out.println("Dime la cantidad de Producto");
-			p3.setCantidad(sc.nextInt());
 			System.out.println("El cuarto Producto ha sido creado correctamente");
 
 			/** Creacion del quinto Producto */
@@ -208,8 +221,6 @@ public class Main {
 			p4.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p4.setPrecio(sc.nextDouble());
-			System.out.println("Dime la cantidad de Producto");
-			p4.setCantidad(sc.nextInt());
 			System.out.println("El quinto Producto ha sido creado correctamente");
 
 		}
@@ -299,10 +310,28 @@ public class Main {
 			/**
 			 * Estos if seleccionan los productos elegidos por el cliente y calculan el
 			 * precio total para que sea pagado posteriormente
+			 * 
+			 * 
+			 * Solo he puesto el stock en dos productos, porque para añadirlos a los demas
+			 * es copiar y pegar todo el rato, no se me ocurria otra forma
 			 */
 
 			if (elec == 1) {
-				System.out.println("Producto añadido correctamente.");
+				boolean vercantidad = false;
+				while (!vercantidad) {
+					System.out.println("Indica la cantidad de producto que quieres");
+					cantidad = sc.nextInt();
+					p.setCantidad(cantidad);
+				
+					if (cantidad <= numeroUnos) {
+						System.out.println("Producto añadido");
+						vercantidad = true;
+					}else {
+						System.out.println("No hay stock suficiente, prueba con un stock menor");
+						vercantidad = false;
+					}
+				}
+					
 				seleccion1 = p.getNombre();
 				total = p.getCantidad() * p.getPrecio();
 
@@ -315,6 +344,21 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 2) {
+
+					boolean vercantidad1 = false;
+					while (!vercantidad1) {
+						System.out.println("Indica la cantidad de producto que quieres");
+						cantidad1 = sc.nextInt();
+						p1.setCantidad(cantidad1);
+
+						if (cantidad1 <= numerosUnos2) {
+							System.out.println("Producto añadido");
+							vercantidad1 = true;
+						} else {
+							System.out.println("No hay stock suficiente, prueba con un stock menor");
+							vercantidad1 = false;
+						}
+					}
 					seleccion2 = p1.getNombre();
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
