@@ -25,9 +25,9 @@ public class Fichero {
 		}
 		b.close();
 		if (encontrado) {
-			System.out.println("El número de teléfono " + buscaTelefono + " se encuentra en el archivo.");
+			System.out.println("Ya estaba registrado en la base de datos");
 		} else {
-			System.out.println("El número de teléfono " + buscaTelefono + " no se encuentra en el archivo.");
+			System.out.println("Se ha registrado correctamente en la base de datos");
 		}
 
 	}

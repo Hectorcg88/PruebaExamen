@@ -7,7 +7,8 @@ public class Producto {
 	 */
 	String nombre;
 	double precio;
-	int cantidad, id;
+	int cantidad;
+	String id;
 	int[] stock = new int[30];
 	/**
 	 * Creacion de los constructores necesarios, con y sin atributos
@@ -17,7 +18,7 @@ public class Producto {
 	 * @param cantidad
 	 */
 
-	public Producto(String nombre, double precio, int cantidad, int id) {
+	public Producto(String id, String nombre, double precio, int cantidad) {
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cantidad = cantidad;
@@ -61,11 +62,11 @@ public class Producto {
 		this.cantidad = cantidad;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

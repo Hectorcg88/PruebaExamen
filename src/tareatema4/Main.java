@@ -36,10 +36,11 @@ public class Main {
 		DateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
 		int[] stock = new int[30];
 		int [] stock2 = new int [30];
-		String rutaCliente = "c:/Users/34666/Desktop/Clientes.txt";
-		String rutaProducto = "c:/Users/34666/Desktop/Productos.txt";
+		String rutaCliente = "C:/Users/34666/eclipse-workspace/TareaTema4/Clientes.txt";
+		String rutaProducto = "C:/Users/34666/eclipse-workspace/TareaTema4/Productos.txt";
 		ArrayList<Cliente> miArrayCliente = new ArrayList<Cliente>();
 		ArrayList<Producto> miArrayProducto = new ArrayList<Producto>();
+		String id1, id2, id3, id4, id5;
 
 
 		/**
@@ -123,6 +124,9 @@ public class Main {
 
 			c1.setTelefono(telef2);
 			telef2 = c1.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef2);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c1.setHistorial(" ");
 			System.out.println("Segundo Cliente creado correctamente");
@@ -138,6 +142,9 @@ public class Main {
 
 			c2.setTelefono(telef3);
 			telef3 = c2.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef1);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c2.setHistorial(" ");
 			System.out.println("Tercer cliente creado correctamente");
@@ -150,7 +157,11 @@ public class Main {
 			p.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p.setPrecio(sc.nextDouble());
-			System.out.println("El primer Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p.setId(sc.next());
+			id1 = p.getId();
+
+			Fichero.leerFichero(rutaProducto, id1);
 
 			/** Creacion del segundo Producto */
 			System.out.println("Indica el nombre del segundo Producto:");
@@ -158,7 +169,11 @@ public class Main {
 			p1.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p1.setPrecio(sc.nextDouble());
-			System.out.println("El segundo Producto ha sido creado correctamente ");
+			System.out.println("Indica la id del producto:");
+			p1.setId(sc.next());
+			id2 = p1.getId();
+
+			Fichero.leerFichero(rutaProducto, id2);
 
 			/** Creacion del tercer Producto */
 			System.out.println("Indica el nombre del tercer Producto:");
@@ -166,7 +181,11 @@ public class Main {
 			p2.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p2.setPrecio(sc.nextDouble());
-			System.out.println("El tercer Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p2.setId(sc.next());
+			id3 = p2.getId();
+
+			Fichero.leerFichero(rutaProducto, id3);
 
 			/** Creacion del cuarto Producto */
 			System.out.println("Indica el nombre del cuarto Producto:");
@@ -174,7 +193,11 @@ public class Main {
 			p3.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p3.setPrecio(sc.nextDouble());
-			System.out.println("El cuarto Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p3.setId(sc.next());
+			id4 = p3.getId();
+
+			Fichero.leerFichero(rutaProducto, id4);
 
 			/** Creacion del quinto Producto */
 			System.out.println("Indica el nombre del quinto Producto:");
@@ -182,7 +205,12 @@ public class Main {
 			p4.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p4.setPrecio(sc.nextDouble());
-			System.out.println("El quinto Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p4.setId(sc.next());
+			id5 = p4.getId();
+
+			Fichero.leerFichero(rutaProducto, id5);
+
 			break;
 
 		default:
@@ -201,7 +229,11 @@ public class Main {
 			p.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p.setPrecio(sc.nextDouble());
-			System.out.println("El primer Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p.setId(sc.next());
+			id1 = p.getId();
+
+			Fichero.leerFichero(rutaProducto, id1);
 
 			/** Creacion del segundo Producto */
 			System.out.println("Indica el nombre del segundo Producto:");
@@ -209,7 +241,11 @@ public class Main {
 			p1.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p1.setPrecio(sc.nextDouble());
-			System.out.println("El segundo Producto ha sido creado correctamente ");
+			System.out.println("Indica la id del producto:");
+			p1.setId(sc.next());
+			id2 = p1.getId();
+
+			Fichero.leerFichero(rutaProducto, id2);
 
 			/** Creacion del tercer Producto */
 			System.out.println("Indica el nombre del tercer Producto:");
@@ -217,7 +253,11 @@ public class Main {
 			p2.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p2.setPrecio(sc.nextDouble());
-			System.out.println("El tercer Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p2.setId(sc.next());
+			id3 = p2.getId();
+
+			Fichero.leerFichero(rutaProducto, id3);
 
 			/** Creacion del cuarto Producto */
 			System.out.println("Indica el nombre del cuarto Producto:");
@@ -225,7 +265,11 @@ public class Main {
 			p3.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p3.setPrecio(sc.nextDouble());
-			System.out.println("El cuarto Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p3.setId(sc.next());
+			id4 = p3.getId();
+
+			Fichero.leerFichero(rutaProducto, id4);
 
 			/** Creacion del quinto Producto */
 			System.out.println("Indica el nombre del quinto Producto:");
@@ -233,8 +277,11 @@ public class Main {
 			p4.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p4.setPrecio(sc.nextDouble());
-			System.out.println("El quinto Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p4.setId(sc.next());
+			id5 = p4.getId();
 
+			Fichero.leerFichero(rutaProducto, id5);
 		}
 
 		if (menu == 2) {
@@ -246,9 +293,11 @@ public class Main {
 			System.out.println("Indica la direccion:");
 			sc.nextLine();
 			c.setDireccion(sc.nextLine());
-
 			c.setTelefono(telef1);
 			telef1 = c.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef1);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c.setHistorial(" ");
 			System.out.println("Primer Cliente creado correctamente");
@@ -264,6 +313,9 @@ public class Main {
 
 			c1.setTelefono(telef2);
 			telef2 = c1.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef2);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c1.setHistorial(" ");
 			System.out.println("Segundo Cliente creado correctamente");
@@ -279,6 +331,9 @@ public class Main {
 
 			c2.setTelefono(telef3);
 			telef3 = c2.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef1);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c2.setHistorial(" ");
 			System.out.println("Tercer cliente creado correctamente");
