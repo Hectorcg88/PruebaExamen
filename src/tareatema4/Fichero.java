@@ -27,7 +27,7 @@ public class Fichero {
 		if (encontrado) {
 			System.out.println("Ya estaba registrado en la base de datos");
 		} else {
-			System.out.println("Se ha registrado correctamente en la base de datos");
+			System.out.println("Se ha registrado correctamente en la base de dato");
 		}
 
 	}
@@ -95,6 +95,33 @@ public class Fichero {
 
 			for (int i = 0; i < miArray.size(); i++) {
 				pw.println(miArray.get(i).mostrar());
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// Nuevamente aprovechamos el finally para
+				// asegurarnos que se cierra el fichero.
+				if (null != fichero) {
+					fichero.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+
+	public static void escribeFicheroTicket(String archivo, ArrayList<String> miArray) {
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+		try {
+			// Añadir flag a true para no machacar contenido del fichero de escritura
+			fichero = new FileWriter(archivo, true);
+			pw = new PrintWriter(fichero);
+
+			for (int i = 0; i < 1; i++) {
+				pw.println(miArray.get(i));
 			}
 
 		} catch (Exception e) {

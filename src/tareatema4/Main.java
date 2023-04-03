@@ -38,9 +38,12 @@ public class Main {
 		int [] stock2 = new int [30];
 		String rutaCliente = "C:/Users/34666/eclipse-workspace/TareaTema4/Clientes.txt";
 		String rutaProducto = "C:/Users/34666/eclipse-workspace/TareaTema4/Productos.txt";
+		String rutaTicket = "C:/Users/34666/eclipse-workspace/TareaTema4/Ticket.txt";
 		ArrayList<Cliente> miArrayCliente = new ArrayList<Cliente>();
 		ArrayList<Producto> miArrayProducto = new ArrayList<Producto>();
+		ArrayList<String> tickets = new ArrayList<String>();
 		String id1, id2, id3, id4, id5;
+		String ticket2;
 
 
 		/**
@@ -414,7 +417,6 @@ public class Main {
 					}
 				}
 					
-				seleccion1 = p.getNombre();
 				total = p.getCantidad() * p.getPrecio();
 
 				System.out.println("\t Menu de pedidos");
@@ -441,37 +443,29 @@ public class Main {
 							vercantidad1 = false;
 						}
 					}
-					seleccion2 = p1.getNombre();
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p.getNombre(), p1.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 3) {
-					seleccion2 = p2.getNombre();
+
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p.getNombre(), p2.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 4) {
-					seleccion2 = p3.getNombre();
 
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p.getNombre(), p3.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 5) {
@@ -480,17 +474,15 @@ public class Main {
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p.getNombre(), p4.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
+
 				}
 
 			}
 
 			if (elec == 2) {
 				System.out.println("Producto añadido correctamente.");
-				seleccion1 = p1.getNombre();
 				total = p1.getCantidad() * p1.getPrecio();
 
 				System.out.println("\t Menu de pedidos");
@@ -502,56 +494,41 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 1) {
-					seleccion2 = p.getNombre();
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
-
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p1.getNombre(), p.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 3) {
-					seleccion2 = p2.getNombre();
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
-
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p1.getNombre(), p2.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 4) {
-					seleccion2 = p3.getNombre();
 
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p1.getNombre(), p3.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 5) {
-					seleccion2 = p4.getNombre();
 
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p1.getNombre(), p4.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 			}
 
 			if (elec == 3) {
 				System.out.println("Producto añadido correctamente.");
-				seleccion1 = p2.getNombre();
 				total = p2.getCantidad() * p2.getPrecio();
 
 				System.out.println("\t Menu de pedidos");
@@ -563,54 +540,41 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 2) {
-					seleccion2 = p1.getNombre();
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p2.getNombre(), p1.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 1) {
-					seleccion2 = p.getNombre();
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p2.getNombre(), p.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 4) {
-					seleccion2 = p3.getNombre();
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p2.getNombre(), p3.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 5) {
-					seleccion2 = p4.getNombre();
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p2.getNombre(), p4.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 			}
 
 			if (elec == 4) {
 				System.out.println("Producto añadido correctamente.");
-				seleccion1 = p3.getNombre();
 				total = p3.getCantidad() * p3.getPrecio();
 
 				System.out.println("\t Menu de pedidos");
@@ -626,50 +590,39 @@ public class Main {
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p3.getNombre(), p1.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 3) {
-					seleccion2 = p2.getNombre();
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p3.getNombre(), p2.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
+
 				}
 
 				if (seleccion3 == 1) {
-					seleccion2 = p.getNombre();
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p3.getNombre(), p.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 5) {
-					seleccion2 = p4.getNombre();
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p3.getNombre(), p4.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 			}
 
 			if (elec == 5) {
 				System.out.println("Producto añadido correctamente.");
-				seleccion1 = p4.getNombre();
 				total = p4.getCantidad() * p4.getPrecio();
 
 				System.out.println("\t Menu de pedidos");
@@ -681,47 +634,36 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 2) {
-					seleccion2 = p1.getNombre();
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p4.getNombre(), p1.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
+
 				}
 
 				if (seleccion3 == 3) {
-					seleccion2 = p2.getNombre();
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p4.getNombre(), p2.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 4) {
-					seleccion2 = p3.getNombre();
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p4.getNombre(), p3.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 1) {
-					seleccion2 = p.getNombre();
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p4.getNombre(), p.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 			}
