@@ -1,7 +1,10 @@
 package tareatema4;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -25,7 +28,7 @@ public class Main {
 	}
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		int menu, elec, elige, pagar, seleccion3, cantidad, cantidad1, numeroUnos, numerosUnos2;
 		double total = 0, total2, total3;
 		String telef, telef1 = "", telef2 = "", telef3 = "", tarj, seleccion1, seleccion2;
@@ -33,6 +36,11 @@ public class Main {
 		DateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
 		int[] stock = new int[30];
 		int [] stock2 = new int [30];
+		String rutaCliente = "c:/Users/34666/Desktop/Clientes.txt";
+		String rutaProducto = "c:/Users/34666/Desktop/Productos.txt";
+		ArrayList<Cliente> miArrayCliente = new ArrayList<Cliente>();
+		ArrayList<Producto> miArrayProducto = new ArrayList<Producto>();
+
 
 		/**
 		 * Creacion de la pasarela de pago
@@ -67,6 +75,8 @@ public class Main {
 		numerosUnos2 = calcularStock(stock2);
 
 
+
+
 		/**
 		 * Menu para crear los clientes y los productos
 		 */
@@ -93,9 +103,11 @@ public class Main {
 			System.out.println("Indica la direccion:");
 			sc.nextLine();
 			c.setDireccion(sc.nextLine());
-
 			c.setTelefono(telef1);
 			telef1 = c.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef1);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c.setHistorial(" ");
 			System.out.println("Primer Cliente creado correctamente");
@@ -271,6 +283,21 @@ public class Main {
 			c2.setHistorial(" ");
 			System.out.println("Tercer cliente creado correctamente");
 		}
+
+		miArrayCliente.add(c);
+		miArrayCliente.add(c1);
+		miArrayCliente.add(c2);
+
+		miArrayProducto.add(p);
+		miArrayProducto.add(p1);
+		miArrayProducto.add(p2);
+		miArrayProducto.add(p3);
+		miArrayProducto.add(p4);
+
+		Fichero.escribeFichero(rutaCliente, miArrayCliente);
+		Fichero.escribeFicheroProducto(rutaProducto, miArrayProducto);
+
+
 
 		/**
 		 * Esta funcion sirve para que el Cliente se registre con su numero de telefono
