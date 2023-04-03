@@ -1,7 +1,9 @@
 package tareatema4;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class PasarelaDePago {
 
@@ -11,6 +13,7 @@ public class PasarelaDePago {
 
 	double importe;
 	Date codigo_pago = new Date();
+
 
 	/**
 	 * Constructor
@@ -171,6 +174,16 @@ public class PasarelaDePago {
 
 		System.out.println("Depositando el total a la siguiente cuenta: 7848721 36791200 79543851.");
 		System.out.println("La transferencia ha sido exitosa. Gracias por la compra");
+	}
+
+	public static void ticket(String p, String p1, double total, ArrayList<String> tickets) {
+		UUID uuid = UUID.randomUUID();
+		String ticket = "Ticket " + uuid.toString() + ": Has seleccionado " + p + " y " + p1 + ", el total es de "
+				+ total + "euros";
+		
+		System.out.println(ticket);
+
+		tickets.add(ticket);
 	}
 
 }

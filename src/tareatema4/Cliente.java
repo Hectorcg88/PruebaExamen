@@ -129,4 +129,9 @@ public class Cliente {
 		}
 	}
 
+	public String mostrar() {
+
+		return getTelefono() + "," + getNombre() + getApellidos() + "," + getDireccion() + "," + getFecha_alta();
+	}
+
 }

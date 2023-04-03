@@ -1,7 +1,10 @@
 package tareatema4;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -25,7 +28,7 @@ public class Main {
 	}
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		int menu, elec, elige, pagar, seleccion3, cantidad, cantidad1, numeroUnos, numerosUnos2;
 		double total = 0, total2, total3;
 		String telef, telef1 = "", telef2 = "", telef3 = "", tarj, seleccion1, seleccion2;
@@ -33,6 +36,15 @@ public class Main {
 		DateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
 		int[] stock = new int[30];
 		int [] stock2 = new int [30];
+		String rutaCliente = "C:/Users/34666/eclipse-workspace/TareaTema4/Clientes.txt";
+		String rutaProducto = "C:/Users/34666/eclipse-workspace/TareaTema4/Productos.txt";
+		String rutaTicket = "C:/Users/34666/eclipse-workspace/TareaTema4/Ticket.txt";
+		ArrayList<Cliente> miArrayCliente = new ArrayList<Cliente>();
+		ArrayList<Producto> miArrayProducto = new ArrayList<Producto>();
+		ArrayList<String> tickets = new ArrayList<String>();
+		String id1, id2, id3, id4, id5;
+		String ticket2;
+
 
 		/**
 		 * Creacion de la pasarela de pago
@@ -67,6 +79,8 @@ public class Main {
 		numerosUnos2 = calcularStock(stock2);
 
 
+
+
 		/**
 		 * Menu para crear los clientes y los productos
 		 */
@@ -93,9 +107,11 @@ public class Main {
 			System.out.println("Indica la direccion:");
 			sc.nextLine();
 			c.setDireccion(sc.nextLine());
-
 			c.setTelefono(telef1);
 			telef1 = c.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef1);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c.setHistorial(" ");
 			System.out.println("Primer Cliente creado correctamente");
@@ -111,6 +127,9 @@ public class Main {
 
 			c1.setTelefono(telef2);
 			telef2 = c1.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef2);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c1.setHistorial(" ");
 			System.out.println("Segundo Cliente creado correctamente");
@@ -126,6 +145,9 @@ public class Main {
 
 			c2.setTelefono(telef3);
 			telef3 = c2.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef1);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c2.setHistorial(" ");
 			System.out.println("Tercer cliente creado correctamente");
@@ -138,7 +160,11 @@ public class Main {
 			p.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p.setPrecio(sc.nextDouble());
-			System.out.println("El primer Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p.setId(sc.next());
+			id1 = p.getId();
+
+			Fichero.leerFichero(rutaProducto, id1);
 
 			/** Creacion del segundo Producto */
 			System.out.println("Indica el nombre del segundo Producto:");
@@ -146,7 +172,11 @@ public class Main {
 			p1.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p1.setPrecio(sc.nextDouble());
-			System.out.println("El segundo Producto ha sido creado correctamente ");
+			System.out.println("Indica la id del producto:");
+			p1.setId(sc.next());
+			id2 = p1.getId();
+
+			Fichero.leerFichero(rutaProducto, id2);
 
 			/** Creacion del tercer Producto */
 			System.out.println("Indica el nombre del tercer Producto:");
@@ -154,7 +184,11 @@ public class Main {
 			p2.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p2.setPrecio(sc.nextDouble());
-			System.out.println("El tercer Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p2.setId(sc.next());
+			id3 = p2.getId();
+
+			Fichero.leerFichero(rutaProducto, id3);
 
 			/** Creacion del cuarto Producto */
 			System.out.println("Indica el nombre del cuarto Producto:");
@@ -162,7 +196,11 @@ public class Main {
 			p3.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p3.setPrecio(sc.nextDouble());
-			System.out.println("El cuarto Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p3.setId(sc.next());
+			id4 = p3.getId();
+
+			Fichero.leerFichero(rutaProducto, id4);
 
 			/** Creacion del quinto Producto */
 			System.out.println("Indica el nombre del quinto Producto:");
@@ -170,7 +208,12 @@ public class Main {
 			p4.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p4.setPrecio(sc.nextDouble());
-			System.out.println("El quinto Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p4.setId(sc.next());
+			id5 = p4.getId();
+
+			Fichero.leerFichero(rutaProducto, id5);
+
 			break;
 
 		default:
@@ -189,7 +232,11 @@ public class Main {
 			p.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p.setPrecio(sc.nextDouble());
-			System.out.println("El primer Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p.setId(sc.next());
+			id1 = p.getId();
+
+			Fichero.leerFichero(rutaProducto, id1);
 
 			/** Creacion del segundo Producto */
 			System.out.println("Indica el nombre del segundo Producto:");
@@ -197,7 +244,11 @@ public class Main {
 			p1.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p1.setPrecio(sc.nextDouble());
-			System.out.println("El segundo Producto ha sido creado correctamente ");
+			System.out.println("Indica la id del producto:");
+			p1.setId(sc.next());
+			id2 = p1.getId();
+
+			Fichero.leerFichero(rutaProducto, id2);
 
 			/** Creacion del tercer Producto */
 			System.out.println("Indica el nombre del tercer Producto:");
@@ -205,7 +256,11 @@ public class Main {
 			p2.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p2.setPrecio(sc.nextDouble());
-			System.out.println("El tercer Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p2.setId(sc.next());
+			id3 = p2.getId();
+
+			Fichero.leerFichero(rutaProducto, id3);
 
 			/** Creacion del cuarto Producto */
 			System.out.println("Indica el nombre del cuarto Producto:");
@@ -213,7 +268,11 @@ public class Main {
 			p3.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p3.setPrecio(sc.nextDouble());
-			System.out.println("El cuarto Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p3.setId(sc.next());
+			id4 = p3.getId();
+
+			Fichero.leerFichero(rutaProducto, id4);
 
 			/** Creacion del quinto Producto */
 			System.out.println("Indica el nombre del quinto Producto:");
@@ -221,8 +280,11 @@ public class Main {
 			p4.setNombre(sc.nextLine());
 			System.out.println("Indica el precio del Producto:");
 			p4.setPrecio(sc.nextDouble());
-			System.out.println("El quinto Producto ha sido creado correctamente");
+			System.out.println("Indica la id del producto:");
+			p4.setId(sc.next());
+			id5 = p4.getId();
 
+			Fichero.leerFichero(rutaProducto, id5);
 		}
 
 		if (menu == 2) {
@@ -234,9 +296,11 @@ public class Main {
 			System.out.println("Indica la direccion:");
 			sc.nextLine();
 			c.setDireccion(sc.nextLine());
-
 			c.setTelefono(telef1);
 			telef1 = c.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef1);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c.setHistorial(" ");
 			System.out.println("Primer Cliente creado correctamente");
@@ -252,6 +316,9 @@ public class Main {
 
 			c1.setTelefono(telef2);
 			telef2 = c1.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef2);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c1.setHistorial(" ");
 			System.out.println("Segundo Cliente creado correctamente");
@@ -267,10 +334,28 @@ public class Main {
 
 			c2.setTelefono(telef3);
 			telef3 = c2.getTelefono();
+
+			Fichero.leerFichero(rutaCliente, telef1);
+
 			System.out.println("La fecha de alta es :" + formato.format(fecha));
 			c2.setHistorial(" ");
 			System.out.println("Tercer cliente creado correctamente");
 		}
+
+		miArrayCliente.add(c);
+		miArrayCliente.add(c1);
+		miArrayCliente.add(c2);
+
+		miArrayProducto.add(p);
+		miArrayProducto.add(p1);
+		miArrayProducto.add(p2);
+		miArrayProducto.add(p3);
+		miArrayProducto.add(p4);
+
+		Fichero.escribeFichero(rutaCliente, miArrayCliente);
+		Fichero.escribeFicheroProducto(rutaProducto, miArrayProducto);
+
+
 
 		/**
 		 * Esta funcion sirve para que el Cliente se registre con su numero de telefono
@@ -332,7 +417,6 @@ public class Main {
 					}
 				}
 					
-				seleccion1 = p.getNombre();
 				total = p.getCantidad() * p.getPrecio();
 
 				System.out.println("\t Menu de pedidos");
@@ -359,37 +443,29 @@ public class Main {
 							vercantidad1 = false;
 						}
 					}
-					seleccion2 = p1.getNombre();
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p.getNombre(), p1.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 3) {
-					seleccion2 = p2.getNombre();
+
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p.getNombre(), p2.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 4) {
-					seleccion2 = p3.getNombre();
 
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p.getNombre(), p3.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 5) {
@@ -398,17 +474,15 @@ public class Main {
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p.getNombre(), p4.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
+
 				}
 
 			}
 
 			if (elec == 2) {
 				System.out.println("Producto añadido correctamente.");
-				seleccion1 = p1.getNombre();
 				total = p1.getCantidad() * p1.getPrecio();
 
 				System.out.println("\t Menu de pedidos");
@@ -420,56 +494,41 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 1) {
-					seleccion2 = p.getNombre();
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
-
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p1.getNombre(), p.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 3) {
-					seleccion2 = p2.getNombre();
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
-
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p1.getNombre(), p2.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 4) {
-					seleccion2 = p3.getNombre();
 
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p1.getNombre(), p3.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 5) {
-					seleccion2 = p4.getNombre();
 
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p1.getNombre(), p4.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 			}
 
 			if (elec == 3) {
 				System.out.println("Producto añadido correctamente.");
-				seleccion1 = p2.getNombre();
 				total = p2.getCantidad() * p2.getPrecio();
 
 				System.out.println("\t Menu de pedidos");
@@ -481,54 +540,41 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 2) {
-					seleccion2 = p1.getNombre();
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p2.getNombre(), p1.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 1) {
-					seleccion2 = p.getNombre();
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p2.getNombre(), p.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 4) {
-					seleccion2 = p3.getNombre();
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p2.getNombre(), p3.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 5) {
-					seleccion2 = p4.getNombre();
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p2.getNombre(), p4.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 			}
 
 			if (elec == 4) {
 				System.out.println("Producto añadido correctamente.");
-				seleccion1 = p3.getNombre();
 				total = p3.getCantidad() * p3.getPrecio();
 
 				System.out.println("\t Menu de pedidos");
@@ -544,50 +590,39 @@ public class Main {
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p3.getNombre(), p1.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 3) {
-					seleccion2 = p2.getNombre();
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p3.getNombre(), p2.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
+
 				}
 
 				if (seleccion3 == 1) {
-					seleccion2 = p.getNombre();
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p3.getNombre(), p.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 5) {
-					seleccion2 = p4.getNombre();
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p3.getNombre(), p4.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 			}
 
 			if (elec == 5) {
 				System.out.println("Producto añadido correctamente.");
-				seleccion1 = p4.getNombre();
 				total = p4.getCantidad() * p4.getPrecio();
 
 				System.out.println("\t Menu de pedidos");
@@ -599,47 +634,36 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 2) {
-					seleccion2 = p1.getNombre();
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p4.getNombre(), p1.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
+
 				}
 
 				if (seleccion3 == 3) {
-					seleccion2 = p2.getNombre();
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p4.getNombre(), p2.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 4) {
-					seleccion2 = p3.getNombre();
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p4.getNombre(), p3.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 				if (seleccion3 == 1) {
-					seleccion2 = p.getNombre();
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
 
-					System.out.println("\t Tus pedidos");
-					System.out.println("1." + seleccion1);
-					System.out.println("2. " + seleccion2);
-					System.out.println("El importe total es: " + total3);
+					PasarelaDePago.ticket(p4.getNombre(), p.getNombre(), total3, tickets);
+					Fichero.escribeFicheroTicket(rutaTicket, tickets);
 				}
 
 			}
