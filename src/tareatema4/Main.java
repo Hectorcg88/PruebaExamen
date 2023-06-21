@@ -7,30 +7,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
 
-	public static int calcularStock(int stock1[]) {
-		int contador = 0;
 
-		for (int i = 0; i < stock1.length; i++) {
-			if (stock1[i] == 1) {
-				contador++;
-			}
-		}
-		return contador;
-	}
-
-	public static void rellenarStock(int stock[]) {
-		for (int i = 1; i < stock.length; i++) {
-			stock[i] = 1;
-		}
-	}
-
+	/** Hacer que se pueda elegir si hay que guardarlo en fichero o en bbdd */
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		int menu, elec, elige, pagar, seleccion3, cantidad, cantidad1, numeroUnos, numerosUnos2;
-		double total = 0, total2, total3;
+		double total = 0, total2, total3 = 0;
 		String telef, telef1 = "", telef2 = "", telef3 = "", tarj, seleccion1, seleccion2;
 		java.util.Date fecha = new Date();
 		DateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
@@ -44,6 +30,7 @@ public class Main {
 		ArrayList<String> tickets = new ArrayList<String>();
 		String id1, id2, id3, id4, id5;
 		String ticket2;
+		UUID id_pedido = UUID.randomUUID();
 
 
 		/**
@@ -72,288 +59,56 @@ public class Main {
 		/**
 		 * Metodo para rellenar todos los stocks
 		 */
-		rellenarStock(stock);
-		numeroUnos = calcularStock(stock);
+		Producto.rellenarStock(stock);
 		
-		rellenarStock(stock2);
-		numerosUnos2 = calcularStock(stock2);
+		Producto.rellenarStock(stock2);
 
 
-
-
-		/**
-		 * Menu para crear los clientes y los productos
-		 */
-
-		System.out.println("Menu:");
-		System.out.println("1. Crear 3 Clientes");
-		System.out.println("2. Crear 5 Productos");
-		System.out.println("Escoge una opcion:");
-		menu = sc.nextInt();
-
-		/**
-		 * Funcion donde se ponen los datos a los clientes o productos
-		 */
-
-
-		switch (menu) {
-
-		case 1:
-			/** Esto es la creacion del 1º Cliente */
-			System.out.println("Dime el nombre del Cliente:");
-			c.setNombre(sc.next());
-			System.out.println("Indica el apellido:");
-			c.setApellidos(sc.next());
-			System.out.println("Indica la direccion:");
-			sc.nextLine();
-			c.setDireccion(sc.nextLine());
-			c.setTelefono(telef1);
-			telef1 = c.getTelefono();
-
-			Fichero.leerFichero(rutaCliente, telef1);
-
-			System.out.println("La fecha de alta es :" + formato.format(fecha));
-			c.setHistorial(" ");
-			System.out.println("Primer Cliente creado correctamente");
-
-			/** Esto es la creacion del 2º Cliente */
-			System.out.println("Dime el nombre del Cliente:");
-			c1.setNombre(sc.next());
-			System.out.println("Indica el apellido:");
-			c1.setApellidos(sc.next());
-			System.out.println("Indica la direccion:");
-			sc.nextLine();
-			c1.setDireccion(sc.nextLine());
-
-			c1.setTelefono(telef2);
-			telef2 = c1.getTelefono();
-
-			Fichero.leerFichero(rutaCliente, telef2);
-
-			System.out.println("La fecha de alta es :" + formato.format(fecha));
-			c1.setHistorial(" ");
-			System.out.println("Segundo Cliente creado correctamente");
-
-			/** Esto es la creacion del 3º Cliente */
-			System.out.println("Dime el nombre del Cliente:");
-			c2.setNombre(sc.next());
-			System.out.println("Indica el apellido:");
-			c2.setApellidos(sc.next());
-			System.out.println("Indica la direccion:");
-			sc.nextLine();
-			c2.setDireccion(sc.nextLine());
-
-			c2.setTelefono(telef3);
-			telef3 = c2.getTelefono();
-
-			Fichero.leerFichero(rutaCliente, telef1);
-
-			System.out.println("La fecha de alta es :" + formato.format(fecha));
-			c2.setHistorial(" ");
-			System.out.println("Tercer cliente creado correctamente");
-			break;
-
-		case 2:
-			/** Creacion del primer Producto */
-			System.out.println("Indica e nombre del primer Producto:");
-			sc.nextLine();
-			p.setNombre(sc.nextLine());
-			System.out.println("Indica el precio del Producto:");
-			p.setPrecio(sc.nextDouble());
-			System.out.println("Indica la id del producto:");
-			p.setId(sc.next());
-			id1 = p.getId();
-
-			Fichero.leerFichero(rutaProducto, id1);
-
-			/** Creacion del segundo Producto */
-			System.out.println("Indica el nombre del segundo Producto:");
-			sc.nextLine();
-			p1.setNombre(sc.nextLine());
-			System.out.println("Indica el precio del Producto:");
-			p1.setPrecio(sc.nextDouble());
-			System.out.println("Indica la id del producto:");
-			p1.setId(sc.next());
-			id2 = p1.getId();
-
-			Fichero.leerFichero(rutaProducto, id2);
-
-			/** Creacion del tercer Producto */
-			System.out.println("Indica el nombre del tercer Producto:");
-			sc.nextLine();
-			p2.setNombre(sc.nextLine());
-			System.out.println("Indica el precio del Producto:");
-			p2.setPrecio(sc.nextDouble());
-			System.out.println("Indica la id del producto:");
-			p2.setId(sc.next());
-			id3 = p2.getId();
-
-			Fichero.leerFichero(rutaProducto, id3);
-
-			/** Creacion del cuarto Producto */
-			System.out.println("Indica el nombre del cuarto Producto:");
-			sc.nextLine();
-			p3.setNombre(sc.nextLine());
-			System.out.println("Indica el precio del Producto:");
-			p3.setPrecio(sc.nextDouble());
-			System.out.println("Indica la id del producto:");
-			p3.setId(sc.next());
-			id4 = p3.getId();
-
-			Fichero.leerFichero(rutaProducto, id4);
-
-			/** Creacion del quinto Producto */
-			System.out.println("Indica el nombre del quinto Producto:");
-			sc.nextLine();
-			p4.setNombre(sc.nextLine());
-			System.out.println("Indica el precio del Producto:");
-			p4.setPrecio(sc.nextDouble());
-			System.out.println("Indica la id del producto:");
-			p4.setId(sc.next());
-			id5 = p4.getId();
-
-			Fichero.leerFichero(rutaProducto, id5);
-
-			break;
-
-		default:
-			System.out.println("Error");
-
-		}
-		/**
-		 * Estos if sirven para crear los productos o los clientes, dependiendo de la
-		 * eleccion anterior
-		 */
-
-		if (menu == 1) {
-			/** Creacion del primer Producto */
-			System.out.println("Indica e nombre del primer Producto:");
-			sc.nextLine();
-			p.setNombre(sc.nextLine());
-			System.out.println("Indica el precio del Producto:");
-			p.setPrecio(sc.nextDouble());
-			System.out.println("Indica la id del producto:");
-			p.setId(sc.next());
-			id1 = p.getId();
-
-			Fichero.leerFichero(rutaProducto, id1);
-
-			/** Creacion del segundo Producto */
-			System.out.println("Indica el nombre del segundo Producto:");
-			sc.nextLine();
-			p1.setNombre(sc.nextLine());
-			System.out.println("Indica el precio del Producto:");
-			p1.setPrecio(sc.nextDouble());
-			System.out.println("Indica la id del producto:");
-			p1.setId(sc.next());
-			id2 = p1.getId();
-
-			Fichero.leerFichero(rutaProducto, id2);
-
-			/** Creacion del tercer Producto */
-			System.out.println("Indica el nombre del tercer Producto:");
-			sc.nextLine();
-			p2.setNombre(sc.nextLine());
-			System.out.println("Indica el precio del Producto:");
-			p2.setPrecio(sc.nextDouble());
-			System.out.println("Indica la id del producto:");
-			p2.setId(sc.next());
-			id3 = p2.getId();
-
-			Fichero.leerFichero(rutaProducto, id3);
-
-			/** Creacion del cuarto Producto */
-			System.out.println("Indica el nombre del cuarto Producto:");
-			sc.nextLine();
-			p3.setNombre(sc.nextLine());
-			System.out.println("Indica el precio del Producto:");
-			p3.setPrecio(sc.nextDouble());
-			System.out.println("Indica la id del producto:");
-			p3.setId(sc.next());
-			id4 = p3.getId();
-
-			Fichero.leerFichero(rutaProducto, id4);
-
-			/** Creacion del quinto Producto */
-			System.out.println("Indica el nombre del quinto Producto:");
-			sc.nextLine();
-			p4.setNombre(sc.nextLine());
-			System.out.println("Indica el precio del Producto:");
-			p4.setPrecio(sc.nextDouble());
-			System.out.println("Indica la id del producto:");
-			p4.setId(sc.next());
-			id5 = p4.getId();
-
-			Fichero.leerFichero(rutaProducto, id5);
-		}
-
-		if (menu == 2) {
-			/** Esto es la creacion del 1º Cliente */
-			System.out.println("Dime el nombre del Cliente:");
-			c.setNombre(sc.next());
-			System.out.println("Indica el apellido:");
-			c.setApellidos(sc.next());
-			System.out.println("Indica la direccion:");
-			sc.nextLine();
-			c.setDireccion(sc.nextLine());
-			c.setTelefono(telef1);
-			telef1 = c.getTelefono();
-
-			Fichero.leerFichero(rutaCliente, telef1);
-
-			System.out.println("La fecha de alta es :" + formato.format(fecha));
-			c.setHistorial(" ");
-			System.out.println("Primer Cliente creado correctamente");
-
-			/** Esto es la creacion del 2º Cliente */
-			System.out.println("Dime el nombre del Cliente:");
-			c1.setNombre(sc.next());
-			System.out.println("Indica el apellido:");
-			c1.setApellidos(sc.next());
-			System.out.println("Indica la direccion:");
-			sc.nextLine();
-			c1.setDireccion(sc.nextLine());
-
-			c1.setTelefono(telef2);
-			telef2 = c1.getTelefono();
-
-			Fichero.leerFichero(rutaCliente, telef2);
-
-			System.out.println("La fecha de alta es :" + formato.format(fecha));
-			c1.setHistorial(" ");
-			System.out.println("Segundo Cliente creado correctamente");
-
-			/** Esto es la creacion del 3º Cliente */
-			System.out.println("Dime el nombre del Cliente:");
-			c2.setNombre(sc.next());
-			System.out.println("Indica el apellido:");
-			c2.setApellidos(sc.next());
-			System.out.println("Indica la direccion:");
-			sc.nextLine();
-			c2.setDireccion(sc.nextLine());
-
-			c2.setTelefono(telef3);
-			telef3 = c2.getTelefono();
-
-			Fichero.leerFichero(rutaCliente, telef1);
-
-			System.out.println("La fecha de alta es :" + formato.format(fecha));
-			c2.setHistorial(" ");
-			System.out.println("Tercer cliente creado correctamente");
-		}
+		System.out.println("Crea 3 Cliente:");
+		Cliente.crearCliente(c);
+		Cliente.crearCliente(c1);
+		Cliente.crearCliente(c2);
 
 		miArrayCliente.add(c);
 		miArrayCliente.add(c1);
 		miArrayCliente.add(c2);
 
-		miArrayProducto.add(p);
-		miArrayProducto.add(p1);
-		miArrayProducto.add(p2);
-		miArrayProducto.add(p3);
-		miArrayProducto.add(p4);
+		System.out.println("Crea 5 productos");
+		Producto.crearProducto(p);
+		Producto.crearProducto(p1);
+		Producto.crearProducto(p2);
+		Producto.crearProducto(p3);
+		Producto.crearProducto(p4);
 
-		Fichero.escribeFichero(rutaCliente, miArrayCliente);
-		Fichero.escribeFicheroProducto(rutaProducto, miArrayProducto);
+
+		System.out.println("Donde quieres guardar los clientes y los productos?");
+		System.out.println("1. Fichero");
+		System.out.println("2. Base de datos");
+
+		int opcionEscribir = sc.nextInt();
+
+		switch (opcionEscribir) {
+
+		case 1:
+			Fichero.escribeFichero(rutaCliente, miArrayCliente);
+			Fichero.escribeFicheroProducto(rutaProducto, miArrayProducto);
+			Fichero.escribeFicheroTicket(rutaTicket, tickets);
+			break;
+
+		case 2:
+			TestConexion.consulta_insert(c.getTelefono(), c.getNombre(), c.getApellidos(), c.getDireccion());
+			TestConexion.consulta_insert(c1.getTelefono(), c1.getNombre(), c1.getApellidos(), c1.getDireccion());
+			TestConexion.consulta_insert(c2.getTelefono(), c2.getNombre(), c2.getApellidos(), c2.getDireccion());
+			TestConexion.consulta_insert_producto(p.getId(), p.getNombre(), p.getPrecio(), p.getCantidad());
+			TestConexion.consulta_insert_producto(p1.getId(), p1.getNombre(), p1.getPrecio(), p1.getCantidad());
+			TestConexion.consulta_insert_producto(p2.getId(), p2.getNombre(), p2.getPrecio(), p2.getCantidad());
+			TestConexion.consulta_insert_producto(p3.getId(), p3.getNombre(), p3.getPrecio(), p3.getCantidad());
+			TestConexion.consulta_insert_producto(p4.getId(), p4.getNombre(), p4.getPrecio(), p4.getCantidad());
+			break;
+
+		default:
+			System.err.println("Error, seleccione 1 o 2");
+		}
 
 
 
@@ -367,7 +122,8 @@ public class Main {
 		while (!tupadre) {
 			System.out.println("Registrate indicando tu numero de telefono, dado anteriormente:");
 			telef = sc.next();
-			if (telef.equalsIgnoreCase(telef1) || telef.equalsIgnoreCase(telef2) || telef.equalsIgnoreCase(telef3)) {
+			if (telef.equalsIgnoreCase(c.getTelefono()) || telef.equalsIgnoreCase(c1.getTelefono())
+					|| telef.equalsIgnoreCase(c2.getTelefono())) {
 
 				System.out.println("El registro ha sido exitoso");
 				tupadre = true;
@@ -402,20 +158,7 @@ public class Main {
 			 */
 
 			if (elec == 1) {
-				boolean vercantidad = false;
-				while (!vercantidad) {
-					System.out.println("Indica la cantidad de producto que quieres");
-					cantidad = sc.nextInt();
-					p.setCantidad(cantidad);
-				
-					if (cantidad <= numeroUnos) {
-						System.out.println("Producto añadido");
-						vercantidad = true;
-					}else {
-						System.out.println("No hay stock suficiente, prueba con un stock menor");
-						vercantidad = false;
-					}
-				}
+				Producto.verificar(stock, p);
 					
 				total = p.getCantidad() * p.getPrecio();
 
@@ -428,21 +171,8 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 2) {
+					Producto.verificar(stock2, p1);
 
-					boolean vercantidad1 = false;
-					while (!vercantidad1) {
-						System.out.println("Indica la cantidad de producto que quieres");
-						cantidad1 = sc.nextInt();
-						p1.setCantidad(cantidad1);
-
-						if (cantidad1 <= numerosUnos2) {
-							System.out.println("Producto añadido");
-							vercantidad1 = true;
-						} else {
-							System.out.println("No hay stock suficiente, prueba con un stock menor");
-							vercantidad1 = false;
-						}
-					}
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
@@ -451,6 +181,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 3) {
+					Producto.verificar(stock2, p2);
 
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
@@ -460,6 +191,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 4) {
+					Producto.verificar(stock2, p3);
 
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
@@ -469,7 +201,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 5) {
-					seleccion2 = p4.getNombre();
+					Producto.verificar(stock2, p4);
 
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
@@ -482,6 +214,7 @@ public class Main {
 			}
 
 			if (elec == 2) {
+				Producto.verificar(stock, p1);
 				System.out.println("Producto añadido correctamente.");
 				total = p1.getCantidad() * p1.getPrecio();
 
@@ -494,6 +227,8 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 1) {
+					Producto.verificar(stock2, p);
+
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
 					PasarelaDePago.ticket(p1.getNombre(), p.getNombre(), total3, tickets);
@@ -501,6 +236,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 3) {
+					Producto.verificar(stock2, p2);
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
 					PasarelaDePago.ticket(p1.getNombre(), p2.getNombre(), total3, tickets);
@@ -508,6 +244,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 4) {
+					Producto.verificar(stock2, p3);
 
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
@@ -517,7 +254,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 5) {
-
+					Producto.verificar(stock2, p4);
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
@@ -528,6 +265,7 @@ public class Main {
 			}
 
 			if (elec == 3) {
+				Producto.verificar(stock, p2);
 				System.out.println("Producto añadido correctamente.");
 				total = p2.getCantidad() * p2.getPrecio();
 
@@ -540,6 +278,7 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 2) {
+					Producto.verificar(stock2, p2);
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
@@ -548,6 +287,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 1) {
+					Producto.verificar(stock2, p);
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
 
@@ -556,6 +296,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 4) {
+					Producto.verificar(stock2, p2);
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
 
@@ -564,6 +305,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 5) {
+					Producto.verificar(stock2, p4);
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
@@ -574,6 +316,7 @@ public class Main {
 			}
 
 			if (elec == 4) {
+				Producto.verificar(stock, p3);
 				System.out.println("Producto añadido correctamente.");
 				total = p3.getCantidad() * p3.getPrecio();
 
@@ -586,6 +329,7 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 2) {
+					Producto.verificar(stock2, p1);
 					seleccion2 = p1.getNombre();
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
@@ -595,6 +339,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 3) {
+					Producto.verificar(stock2, p2);
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
 
@@ -604,6 +349,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 1) {
+					Producto.verificar(stock2, p);
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
 
@@ -612,6 +358,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 5) {
+					Producto.verificar(stock2, p4);
 					total2 = p4.getPrecio() * p4.getCantidad();
 					total3 = total + total2;
 
@@ -622,6 +369,7 @@ public class Main {
 			}
 
 			if (elec == 5) {
+				Producto.verificar(stock, p4);
 				System.out.println("Producto añadido correctamente.");
 				total = p4.getCantidad() * p4.getPrecio();
 
@@ -634,6 +382,7 @@ public class Main {
 				seleccion3 = sc.nextInt();
 
 				if (seleccion3 == 2) {
+					Producto.verificar(stock2, p1);
 					total2 = p1.getPrecio() * p1.getCantidad();
 					total3 = total + total2;
 
@@ -643,6 +392,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 3) {
+					Producto.verificar(stock2, p2);
 					total2 = p2.getPrecio() * p2.getCantidad();
 					total3 = total + total2;
 
@@ -651,6 +401,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 4) {
+					Producto.verificar(stock2, p3);
 					total2 = p3.getPrecio() * p3.getCantidad();
 					total3 = total + total2;
 
@@ -659,6 +410,7 @@ public class Main {
 				}
 
 				if (seleccion3 == 1) {
+					Producto.verificar(stock2, p);
 					total2 = p.getPrecio() * p.getCantidad();
 					total3 = total + total2;
 
@@ -686,7 +438,7 @@ public class Main {
 		switch (pagar) {
 
 		case 1:
-			PasarelaDePago.Efectivo(total);
+			PasarelaDePago.Efectivo(total3);
 			break;
 		case 2:
 			PasarelaDePago.Tarjeta();

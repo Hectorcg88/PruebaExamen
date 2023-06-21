@@ -1,5 +1,6 @@
 package tareatema4;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -132,6 +133,29 @@ public class Cliente {
 	public String mostrar() {
 
 		return getTelefono() + "," + getNombre() + getApellidos() + "," + getDireccion() + "," + getFecha_alta();
+	}
+
+	public static Cliente crearCliente(Cliente cliente) {
+		Scanner sc = new Scanner(System.in);
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		String telef1 = "";
+
+		System.out.println("Dime el nombre del Cliente:");
+		cliente.setNombre(sc.next());
+		System.out.println("Indica el apellido:");
+		cliente.setApellidos(sc.next());
+		System.out.println("Indica la direccion:");
+		sc.nextLine();
+		cliente.setDireccion(sc.nextLine());
+		cliente.setTelefono(telef1);
+		telef1 = cliente.getTelefono();
+
+		Date fecha = new Date();
+		System.out.println("La fecha de alta es: " + formato.format(fecha));
+		cliente.setHistorial("");
+
+		System.out.println("Cliente creado con exito");
+		return cliente;
 	}
 
 }

@@ -1,1 +1,4 @@
-Ticket dc9eb417-cfac-4396-b90b-6ada12c6ed31: Has seleccionado 4 y 4, el total es de 				+ totaleuros
+
+Ticket 7eeb6d11-71f9-444f-8f89-4d399d16c5af: Has seleccionado 8 y 4, el total es de 186.0euros
+Ticket 83d65a47-48bb-48af-9bf8-73746526da31: Has seleccionado 1 y 6, el total es de 49.0euros
+Ticket bc171964-9cb4-4565-9a41-028bcb96ea35: Has seleccionado 3 y 2, el total es de 63.0euros
